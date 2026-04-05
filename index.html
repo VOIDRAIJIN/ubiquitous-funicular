@@ -8,14 +8,29 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: #0d0d0d;
   color: white;
+
+  /* Background image */
+  background: url("https://images.unsplash.com/photo-1518770660439-4636190af475") no-repeat center center fixed;
+  background-size: cover;
+}
+
+/* Dark overlay */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.75);
+  z-index: -1;
 }
 
 header {
   text-align: center;
   padding: 20px;
-  background: #111;
+  background: rgba(0,0,0,0.7);
 }
 
 input {
@@ -52,7 +67,7 @@ button:hover {
 }
 
 .card {
-  background: #1a1a1a;
+  background: rgba(20,20,20,0.9);
   border-radius: 15px;
   padding: 10px;
   text-align: center;
@@ -98,27 +113,22 @@ video, img {
 
 <script>
 const resources = [
-  {
-    title: "Cinematic Clip Pack",
-    category: "clips",
-    type: "video",
-    src: "https://www.w3schools.com/html/mov_bbb.mp4",
-    download: "https://www.w3schools.com/html/mov_bbb.mp4"
-  },
-  {
-    title: "Velocity Edit Pack",
-    category: "packs",
-    type: "image",
-    src: "https://via.placeholder.com/300x200.png?text=Edit+Pack",
-    download: "#"
-  },
-  {
-    title: "Light Leak Overlay",
-    category: "overlays",
-    type: "video",
-    src: "https://www.w3schools.com/html/movie.mp4",
-    download: "https://www.w3schools.com/html/movie.mp4"
-  }
+  { title: "Cinematic Clip Pack", category: "clips", type: "video", src: "https://www.w3schools.com/html/mov_bbb.mp4", download: "#" },
+  { title: "Velocity Edit Pack", category: "packs", type: "image", src: "https://via.placeholder.com/300x200?text=Velocity+Pack", download: "#" },
+  { title: "Light Leak Overlay", category: "overlays", type: "video", src: "https://www.w3schools.com/html/movie.mp4", download: "#" },
+
+  { title: "Anime Clips Pack", category: "clips", type: "image", src: "https://via.placeholder.com/300x200?text=Anime+Clips", download: "#" },
+  { title: "Glitch Overlay Pack", category: "overlays", type: "image", src: "https://via.placeholder.com/300x200?text=Glitch+Overlay", download: "#" },
+  { title: "Transitions Pack", category: "packs", type: "image", src: "https://via.placeholder.com/300x200?text=Transitions", download: "#" },
+  { title: "TikTok Viral Clips", category: "clips", type: "video", src: "https://www.w3schools.com/html/mov_bbb.mp4", download: "#" },
+  { title: "Fire Effects Overlay", category: "overlays", type: "image", src: "https://via.placeholder.com/300x200?text=Fire+Overlay", download: "#" },
+  { title: "Sound Effects Pack", category: "packs", type: "image", src: "https://via.placeholder.com/300x200?text=SFX+Pack", download: "#" },
+  { title: "Gaming Montage Clips", category: "clips", type: "video", src: "https://www.w3schools.com/html/movie.mp4", download: "#" },
+  { title: "Neon Overlay Pack", category: "overlays", type: "image", src: "https://via.placeholder.com/300x200?text=Neon+Overlay", download: "#" },
+  { title: "Color Grading Pack", category: "packs", type: "image", src: "https://via.placeholder.com/300x200?text=Color+Pack", download: "#" },
+  { title: "Slow Motion Clips", category: "clips", type: "video", src: "https://www.w3schools.com/html/mov_bbb.mp4", download: "#" },
+  { title: "Particles Overlay", category: "overlays", type: "image", src: "https://via.placeholder.com/300x200?text=Particles", download: "#" },
+  { title: "Premium Editing Pack", category: "packs", type: "image", src: "https://via.placeholder.com/300x200?text=Premium+Pack", download: "#" }
 ];
 
 const container = document.getElementById("resourceContainer");
