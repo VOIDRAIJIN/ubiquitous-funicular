@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Editor Resource Hub</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0d0d0d;
+  color: white;
+}
+
+header {
+  text-align: center;
+  padding: 20px;
+  background: #111;
+}
+
+input {
+  padding: 10px;
+  width: 60%;
+  border-radius: 10px;
+  border: none;
+}
+
+nav {
+  text-align: center;
+  margin: 10px;
+}
+
+button {
+  margin: 5px;
+  padding: 10px 15px;
+  border: none;
+  background: #222;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #444;
+}
+
+#resourceContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 15px;
+  padding: 20px;
+}
+
+.card {
+  background: #1a1a1a;
+  border-radius: 15px;
+  padding: 10px;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+video, img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.download {
+  margin-top: 10px;
+  display: inline-block;
+  padding: 8px 12px;
+  background: #00ffcc;
+  color: black;
+  border-radius: 8px;
+  text-decoration: none;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>🎬 Editor Resource Hub</h1>
+  <input type="text" id="search" placeholder="Search clips, presets, packs...">
+</header>
+
+<nav>
+  <button onclick="filterCategory('all')">All</button>
+  <button onclick="filterCategory('clips')">Clips</button>
+  <button onclick="filterCategory('packs')">Packs</button>
+  <button onclick="filterCategory('overlays')">Overlays</button>
+</nav>
+
+<main id="resourceContainer"></main>
+
+<script>
+const resources = [
+  {
+    title: "Cinematic Clip Pack",
+    category: "clips",
+    type: "video",
+    src: "https://www.w3schools.com/html/mov_bbb.mp4",
+    download: "https://www.w3schools.com/html/mov_bbb.mp4"
+  },
+  {
+    title: "Velocity Edit Pack",
+    category: "packs",
+    type: "image",
+    src: "https://via.placeholder.com/300x200.png?text=Edit+Pack",
+    download: "#"
+  },
+  {
+    title: "Light Leak Overlay",
+    category: "overlays",
+    type: "video",
+    src: "https://www.w3schools.com/html/movie.mp4",
+    download: "https://www.w3schools.com/html/movie.mp4"
+  }
+];
+
+const container = document.getElementById("resourceContainer");
+const searchInput = document.getElementById("search");
+
+function displayResources(list) {
+  container.innerHTML = "";
+
+  list.forEach(item => {
+    const card = document.createElement("div");
+    card.className = "card";
+
+    let preview;
+    if (item.type === "video") {
+      preview = `<video controls src="${item.src}"></video>`;
+    } else {
+      preview = `<img src="${item.src}" />`;
+    }
+
+    card.innerHTML = `
+      <h3>${item.title}</h3>
+      ${preview}
+      <a class="download" href="${item.download}" download>Download</a>
+    `;
+
+    container.appendChild(card);
+  });
+}
+
+function filterCategory(category) {
+  if (category === "all") {
+    displayResources(resources);
+  } else {
+    const filtered = resources.filter(r => r.category === category);
+    displayResources(filtered);
+  }
+}
+
+searchInput.addEventListener("input", () => {
+  const value = searchInput.value.toLowerCase();
+  const filtered = resources.filter(r =>
+    r.title.toLowerCase().includes(value)
+  );
+  displayResources(filtered);
+});
+
+displayResources(resources);
+</script>
+
+</body>
+</html>
